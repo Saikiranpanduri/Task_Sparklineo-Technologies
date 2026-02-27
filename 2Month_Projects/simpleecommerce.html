@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Product Page</h2>
+
+<h3>Product: Shoes</h3>
+<p>Price: ₹2000</p>
+<button onclick="addToCart()">Add to Cart</button>
+
+<p>Cart Items: <span id="cart">0</span></p>
+
+<script>
+let cartCount = 0;
+
+function addToCart() {
+  cartCount++;
+  document.getElementById("cart").textContent = cartCount;
+}
+</script>
+
+</body>
+</html>

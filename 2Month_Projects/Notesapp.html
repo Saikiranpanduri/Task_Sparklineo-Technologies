@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notes App</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    textarea { width: 300px; height: 100px; }
+    .note { background: #f4f4f4; padding: 10px; margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+<h2>Notes App</h2>
+
+<textarea id="noteInput"></textarea><br><br>
+<button onclick="addNote()">Add Note</button>
+
+<div id="notesContainer"></div>
+
+<script>
+let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+function saveNotes() {
+  localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+function displayNotes() {
+  const container = document.getElementById("notesContainer");
+  container.innerHTML = "";
+  notes.forEach((note, index) => {
+    container.innerHTML += `
+      <div class="note">
+        ${note}
+        <button onclick="deleteNote(${index})">Delete</button>
+      </div>`;
+  });
+}
+
+function addNote() {
+  const input = document.getElementById("noteInput");
+  if(input.value.trim() !== "") {
+    notes.push(input.value);
+    saveNotes();
+    displayNotes();
+    input.value = "";
+  }
+}
+
+function deleteNote(index) {
+  notes.splice(index, 1);
+  saveNotes();
+  displayNotes();
+}
+
+displayNotes();
+</script>
+
+</body>
+</html>

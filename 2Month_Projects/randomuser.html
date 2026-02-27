@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Random User</h2>
+<button onclick="getUser()">Get User</button>
+
+<div id="user"></div>
+
+<script>
+async function getUser() {
+  const response = await fetch("https://randomuser.me/api/");
+  const data = await response.json();
+  const user = data.results[0];
+
+  document.getElementById("user").innerHTML = `
+    <img src="${user.picture.large}">
+    <p>${user.name.first} ${user.name.last}</p>
+    <p>${user.email}</p>
+  `;
+}
+</script>
+
+</body>
+</html>

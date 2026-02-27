@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Quiz App</h2>
+<p id="question"></p>
+<button onclick="checkAnswer(true)">True</button>
+<button onclick="checkAnswer(false)">False</button>
+
+<script>
+const question = {
+  text: "JavaScript is a programming language.",
+  answer: true
+};
+
+document.getElementById("question").textContent = question.text;
+
+function checkAnswer(userAnswer) {
+  if(userAnswer === question.answer) {
+    alert("Correct!");
+  } else {
+    alert("Wrong!");
+  }
+}
+</script>
+
+</body>
+</html>
